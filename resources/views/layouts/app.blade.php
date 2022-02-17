@@ -17,57 +17,36 @@
 </head>
 
 <body class="d-flex flex-column">
-    <nav class="navbar navbar-expand-sm">
-        <div class="container d-flex">
-            <ul class="navbar-nav d-flex flex-fill justify-content-between align-items-center">
-                <li class="nav-item d-flex align-items-center position-relative">
-                    <a class="nav-link" href="#"><img
-                            src="https://inesan.eu/wp-content/uploads/2020/10/logo_Inesan-bile-260x65-1.png"></a>
-                    <h3 class="open-tab-title text-white mx-5 mb-0">Nástěnka</h3>
-                </li>
-                <div class="d-flex">
-                    <li class="nav-item">
-                        <a class="nav-link text-white admin" href="#">Admin<i
-                                class="fas fa-users-cog fa-lg mx-3"></i></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white logout" href="{{ route('logout') }}"
-                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Odhlásit
-                            <i class="fas fa-sign-out-alt fa-lg mx-3"></i></a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                            @csrf
-                        </form>
-                    </li>
-                </div>
-            </ul>
+    <div class='container'>
+        <div id="navigation-bar">
+            <nav>
+
+                @auth
+                    <a href="{{ route('logout') }}"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        Logout
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                        @csrf
+                    </form>
+                    <a href="#" id="menu-icon"></a>
+                @else
+                    <p>nejsi lognuty</p>
+                    @endif
+                    <a href="/posts">
+                        Diskuzní forum
+                    </a>
+
+                </nav>
+            </div>
         </div>
-    </nav>
-
-    <nav class="navbar navbar-expand-sm justify-content-center bg-white sticky-top shadow p-2 mb-2 bg-white">
-        <ul class="navbar-nav navigation">
-            <li class="nav-item mx-4">
-                <a class="nav-link" href="#">Nástěnka<i class="fas fa-home mx-2"></i></a>
-            </li>
-            <li class="nav-item mx-4">
-                <a class="nav-link" href="#">Uživatelé<i class="fas fa-users mx-2"></i></a>
-            </li>
-            <li class="nav-item mx-4">
-                <a class="nav-link" href="#">Link 3</a>
-            </li>
-            <li class="nav-item mx-4">
-                <a class="nav-link" href="#">Link 4</a>
-            </li>
-            <li class="nav-item mx-4">
-                <a class="nav-link" href="#">Link 5</a>
-            </li>
-        </ul>
-    </nav>
-    @yield("content")
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-    </script>
+        @yield("content")
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+        </script>
 
 
-</body>
+    </body>
 
-</html>
+    </html>

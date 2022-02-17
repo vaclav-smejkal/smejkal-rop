@@ -2,6 +2,16 @@
 <form method="POST" action="{{ route('register') }}">
     @csrf
     <div class="form-floating">
+        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name"
+            value="{{ old('name') }}" placeholder="name">
+        <label for="name">name</label>
+        @error('email')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+    </div>
+    <div class="form-floating">
         <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" id="email"
             value="{{ old('email') }}" placeholder="E-mail">
         <label for="email">E-mail</label>
