@@ -19,7 +19,7 @@ class PostController extends Controller
         } else {
             $posts = Post::join('users', 'posts.user_id', "=", 'users.id')->select('posts.*', 'users.role_id', 'users.name')->where('role_id', null)->limit(15)->get();
         }
-        return view('post.index', ['posts' => $posts]);
+        return view('post.index', ['posts' => $posts, 'search' => $request->search]);
     }
 
     public function create()

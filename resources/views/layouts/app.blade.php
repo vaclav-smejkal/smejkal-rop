@@ -16,32 +16,56 @@
     <title>@yield("title")</title>
 </head>
 
-<body class="d-flex flex-column">
-    <div class='container'>
-        <div id="navigation-bar">
-            <nav>
-
-                @auth
-                    <a href="{{ route('logout') }}"
-                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        Logout
-                    </a>
-
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                        @csrf
-                    </form>
-                    <a href="#" id="menu-icon"></a>
-                @else
-                    <p>nejsi lognuty</p>
-                    @endif
-                    <a href="/posts">
-                        Diskuzní forum
-                    </a>
-
-                </nav>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="/">
+                            Oficiální fórum
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/posts">
+                            Diskuzní fórum
+                        </a>
+                    </li>
+                </ul>
+                <ul class="btn-box">
+                    @auth
+                        <li class="nav-item">
+                            <a href="{{ route('logout') }}"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                Odhlásit se
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                @csrf
+                            </form>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                            <a href="/login" class="btn btn-primary">
+                                Přihlášení
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/register" class="btn btn-primary">
+                                Registrace
+                            </a>
+                        </li>
+                        @endif
+                    </ul>
+                </div>
             </div>
-        </div>
-        @yield("content")
+        </nav>
+        <main>
+            @yield("content")
+        </main>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
         </script>
