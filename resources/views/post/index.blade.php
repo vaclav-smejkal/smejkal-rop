@@ -24,7 +24,6 @@
                             <div class="date">{{ date_format($post->created_at, 'H:i | d.m.Y') }}</div>
                         </div>
                         <div class="body">{{ mb_strimwidth($post->body, 0, 350, '...') }}</div>
-                        <div class="category">{{ $post->slug }}</div>
                         <div class="btn-group">
                             <a href="{{ url('posts/' . $post->id) }}" class="btn btn-primary">
                                 Číst více
