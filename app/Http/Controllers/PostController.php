@@ -80,4 +80,33 @@ class PostController extends Controller
         } else {
         }
     }
+    public function edit($post_id)
+    {
+        $post = Post::findOrFail($post_id);
+        $categories = Category::get();
+        if (Auth::id() == $post->user_id) {
+            return view('post.edit', ["post" => $post, "categories" => $categories]);
+        } else {
+        }
+    }
+    public function update(Request $request)
+    {
+        Validator::make(
+            $request->all(),
+            $rules = [
+                'title' => [
+                    'required',
+                    'string',
+                    'max:100',
+                ],
+                'body' => [
+                    'required',
+                ],
+                'category' => [
+                    'required'
+                ]
+            ],
+            $messages = []
+        )->validate();
+    }
 }

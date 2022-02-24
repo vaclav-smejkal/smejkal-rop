@@ -7,7 +7,7 @@
         <div class="form-floating">
             <input type="text" class="form-control" name="title" id="title" placeholder="Název příspěvku"
                 value="{{ old('title') }}">
-            <label for="name">Název produktu</label>
+            <label for="name">Titulek příspěvku</label>
             @error('title')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
