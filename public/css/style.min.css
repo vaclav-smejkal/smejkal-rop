@@ -364,6 +364,9 @@ textarea {
 body {
   font-family: "Montserrat";
   line-height: 1.35em;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 a {
@@ -417,6 +420,7 @@ section {
 
 main {
   padding-top: 56px;
+  flex: 1;
 }
 
 .btn {
@@ -560,4 +564,54 @@ textarea.is-invalid {
 }
 #posts .btn-group {
   margin-top: 1rem;
+}
+
+#post .title {
+  margin: 0 0 0.5rem;
+}
+#post p {
+  text-align: justify;
+}
+#post .author {
+  color: #777777;
+  margin-bottom: 1rem;
+}
+
+#footer {
+  background-color: #000;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+}
+
+#login form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+#login .invalid-feedback {
+  display: block;
+}
+#login .form-floating {
+  margin-bottom: 0.75rem;
+}
+#login .form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@media (max-width: 576px) {
+  #login .form-footer {
+    flex-direction: column;
+  }
+}
+@media (max-width: 576px) {
+  #login .links {
+    margin-top: 0.75rem;
+  }
+}
+#login a {
+  color: #18a0fb;
+}
+#login .title {
+  text-align: center;
 }

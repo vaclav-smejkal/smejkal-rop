@@ -2,11 +2,15 @@
 @section('title', 'Dashboard')
 
 @section('content')
-    {{ $post->id }}
-    {{ $post->title }}
-    {{ $post->body }}
-    <p>jmeno uzivatele: {{ $user->name }}</p>
-
-    <p>kategorie: {{ $category->name }} </p>
-
+    <section id="post">
+        <div class="container">
+            <div class="title">
+                {{ $post->title }}
+            </div>
+            <div class="author">Autor: {{ $user->name }}</div>
+            <p class="body">
+                {{ $post->body }}
+            </p>
+        </div>
+    </section>
 @endsection
