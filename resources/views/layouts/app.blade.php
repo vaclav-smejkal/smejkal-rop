@@ -35,17 +35,24 @@
                             Diskuzní fórum
                         </a>
                     </li>
+                    @auth
+                        <li class="nav-item">
+                            <a href="/post/create">
+                                Vytvořit příspěvek
+                            </a>
+                        </li>
+                    @endauth
                 </ul>
                 <ul class="btn-box">
                     @auth
                         <li class="nav-item">
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                @csrf
+                            </form>
                             <a href="{{ route('logout') }}"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 Odhlásit se
                             </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                                @csrf
-                            </form>
                         </li>
                     @else
                         <li class="nav-item">

@@ -240,8 +240,18 @@ textarea {
     }
   }
 
-  .btn-group {
+  .button-group {
     margin-top: 1rem;
+    display: flex;
+
+    .btn-success,
+    .btn-danger {
+      margin-left: .5rem;
+      height: 40px;
+      width: 40px;
+      display: grid;
+      place-items: center;
+    }
   }
 }
 
@@ -301,6 +311,52 @@ textarea {
     color: $primary-color;
   }
 
+  .title {
+    text-align: center;
+  }
+}
+
+#edit {
+  form {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .invalid-feedback {
+    display: block;
+  }
+
+  .form-select,
+  .form-floating {
+    margin-bottom: .75rem;
+  }
+
+  .form-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @media (max-width: $sm) {
+      flex-direction: column;
+    }
+  }
+
+  .links {
+    @media (max-width: $sm) {
+      margin-top: .75rem;
+    }
+  }
+
+  a {
+    color: $primary-color;
+  }
+
+  .title {
+    text-align: center;
+  }
+}
+
+#error {
   .title {
     text-align: center;
   }

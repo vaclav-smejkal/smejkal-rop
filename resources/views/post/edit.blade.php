@@ -2,9 +2,9 @@
 @section('title', 'Dashboard')
 
 @section('content')
-    <section id="posts">
+    <section id="edit">
         <div class="container">
-            <h1 class="title">Editování příspěvku {{ $post->title }} <span><i class="fas fa-edit"></i></span>
+            <h1 class="title">Editování příspěvku {{ $post->title }}
             </h1>
             <form action="{{ route('post.update', $post) }}" method="POST">
                 @csrf
@@ -20,16 +20,16 @@
                     @enderror
                 </div>
                 <div class="form-floating">
-                    <input type="text" class="form-control" name="body" id="body" placeholder="Tělo příspěvku"
-                        value="{{ $post->body }}">
+                    <textarea type="text" class="form-control" name="body" id="body" placeholder="Tělo příspěvku"
+                        style="height: 200px">{{ $post->body }}</textarea>
                     <label for="name">Obsah příspěvku</label>
-                    @error('title')
+                    @error('body')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
                 </div>
-                <select name="category" id="category">
+                <select class="form-select" name="category" id="category">
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}" @if ($post->category_id == $category->id) selected @endif>
                             {{ $category->name }}</option>

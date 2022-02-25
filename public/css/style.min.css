@@ -562,8 +562,17 @@ textarea.is-invalid {
 #posts .post-header .date {
   color: #777777;
 }
-#posts .btn-group {
+#posts .button-group {
   margin-top: 1rem;
+  display: flex;
+}
+#posts .button-group .btn-success,
+#posts .button-group .btn-danger {
+  margin-left: 0.5rem;
+  height: 40px;
+  width: 40px;
+  display: grid;
+  place-items: center;
 }
 
 #post .title {
@@ -613,5 +622,42 @@ textarea.is-invalid {
   color: #18a0fb;
 }
 #login .title {
+  text-align: center;
+}
+
+#edit form {
+  max-width: 900px;
+  margin: 0 auto;
+}
+#edit .invalid-feedback {
+  display: block;
+}
+#edit .form-select,
+#edit .form-floating {
+  margin-bottom: 0.75rem;
+}
+#edit .form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@media (max-width: 576px) {
+  #edit .form-footer {
+    flex-direction: column;
+  }
+}
+@media (max-width: 576px) {
+  #edit .links {
+    margin-top: 0.75rem;
+  }
+}
+#edit a {
+  color: #18a0fb;
+}
+#edit .title {
+  text-align: center;
+}
+
+#error .title {
   text-align: center;
 }
