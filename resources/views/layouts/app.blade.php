@@ -35,42 +35,49 @@
                             Diskuzní fórum
                         </a>
                     </li>
-                </ul>
-                <ul class="btn-box">
                     @auth
                         <li class="nav-item">
-                            <a href="{{ route('logout') }}"
-                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                Odhlásit se
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                                @csrf
-                            </form>
-                        </li>
-                    @else
-                        <li class="nav-item">
-                            <a href="/login" class="btn btn-primary">
-                                Přihlášení
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/register" class="btn btn-primary">
-                                Registrace
+                            <a href="/posts">
+                                Diskuzní fórum
                             </a>
                         </li>
                         @endif
                     </ul>
+                    <ul class="btn-box">
+                        @auth
+                            <li class="nav-item">
+                                <a href="{{ route('logout') }}"
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    Odhlásit se
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                </form>
+                            </li>
+                        @else
+                            <li class="nav-item">
+                                <a href="/login" class="btn btn-primary">
+                                    Přihlášení
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/register" class="btn btn-primary">
+                                    Registrace
+                                </a>
+                            </li>
+                            @endif
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
-        <main>
-            @yield("content")
-        </main>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-        </script>
+            </nav>
+            <main>
+                @yield("content")
+            </main>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+                        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+            </script>
 
 
-    </body>
+        </body>
 
-    </html>
+        </html>

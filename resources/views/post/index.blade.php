@@ -4,10 +4,9 @@
 @section('content')
     <section id="posts">
         <div class="container">
-            <h1 class="main-title">Diskuzní fórum</h1>
+            <h1 class="main-title">Diskusní fórum</h1>
             <p class="desc">
-                Lorem ipsum dolor sit amet, consectetuer quia adipiscing elit. Neque quia porro quisquam est, qui
-                dolorem ipsum quia dolor sit amet, consectetur, adipiscing adipisci velit.
+                Diskusní fórum tvořené přihlášenými uživateli.
             </p>
             <form action="/posts" method="GET" class="form">
                 <input type="text" name="search">

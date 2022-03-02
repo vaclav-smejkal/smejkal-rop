@@ -15,11 +15,17 @@ class PostController extends Controller
     public function index(Request $request)
     {
         if ($request->search) {
-            $posts = Post::join('users', 'posts.user_id', "=", 'users.id')->select('posts.*', 'users.role_id', 'users.name')->where([['role_id', null], ['title', 'regexp', $request->search]])->limit(15)->get();
+            $posts = Post::join('users', 'posts.user_id', "=", 'users.id')
+                ->select('posts.*', 'users.role_id', 'users.name')
+                ->where([['role_id', null], ['title', 'regexp', $request->search]])
+                ->limit(15)->get();
         } else {
-            $posts = Post::join('users', 'posts.user_id', "=", 'users.id')->select('posts.*', 'users.role_id', 'users.name')->where('role_id', null)->limit(15)->get();
+            $posts = Post::join('users', 'posts.user_id', "=", 'users.id')
+                ->select('posts.*', 'users.role_id', 'users.name')
+                ->where('role_id', null)
+                ->limit(15)->get();
         }
-        return view('post.index', ['posts' => $posts, 'search' => $request->search]);
+        return view('post.index', ['posts' => $posts]);
     }
 
     public function create()
