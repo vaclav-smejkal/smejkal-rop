@@ -3,6 +3,8 @@
 
 @section('content')
     <section id="error">
-        <h1 class="title">Error 404 - stránka nenalezena</h1>
+        <div class="container">
+            <h1 class="title">Error 404 - stránka nenalezena</h1>
+        </div>
     </section>
 @endsection
