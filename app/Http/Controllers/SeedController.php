@@ -9,7 +9,6 @@ class SeedController extends Controller
 {
     public function index()
     {
-        Artisan::call('db:wipe');
         Artisan::call('migrate');
         Artisan::call("db:seed", ['--class' => 'DatabaseSeeder']);
 
