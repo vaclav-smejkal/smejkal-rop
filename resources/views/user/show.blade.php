@@ -2,7 +2,7 @@
 @section('title', 'Dashboard')
 
 @section('content')
-    <section id="post">
+    <section id="user-show">
         <div class="container">
             <div class="title">
                 {{ $user->name }}
@@ -12,6 +12,10 @@
             @else
                 <div class="title">je to uzivatel</div>
             @endif
+            <div class="avatar">
+                <img src="{{ $user->image }}">
+            </div>
+            <a href="{{ url('/user/' . $user->id . '/edit') }}" class="btn btn-success"> <i class="fa fa-pencil"></i></a>
             <form action="/user/{{ $user->id }}" method="GET" class="form">
                 <input type="text" name="search">
                 <button type="submit" class="btn btn-primary">Vyhledat příspěvek</button>

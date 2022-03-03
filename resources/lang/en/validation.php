@@ -162,6 +162,7 @@ return [
         'title' => 'titulek',
         'body' => 'obsah',
         'category' => 'kategorie',
+        'image' => 'profilový obrázek',
     ],
 
 ];

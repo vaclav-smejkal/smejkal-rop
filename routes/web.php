@@ -24,9 +24,15 @@ Route::get('/seed', [SeedController::class, 'index']);
 
 Route::get('/posts', [PostController::class, "index"]);
 Route::get('/posts/{post_id}', [PostController::class, "show"]);
-Route::group(['middleware' => ['auth']], function () {
-    Route::resource('/post', PostController::class)->only(["store", "edit", "update", "destroy", "create"]);
-});
 
 Route::get('/user/{user_id}', [UserController::class, "show"]);
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::resource('/post', PostController::class)->only(["store", "edit", "update", "destroy", "create"]);
+    Route::resource('/user', UserController::class)->only(["edit", "update"]);
+});
+
+
+
+
 //dodelat edit update delete u POST a pak vse udelat s kategoriema

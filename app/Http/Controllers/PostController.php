@@ -82,8 +82,7 @@ class PostController extends Controller
         $post = Post::findOrFail($post_id);
         if (Auth::id() == $post->user_id) {
             $post->delete();
-            redirect();
-        } else {
+            return redirect('/');
         }
     }
     public function edit($post_id)
@@ -95,7 +94,7 @@ class PostController extends Controller
         } else {
         }
     }
-    public function update(Request $request)
+    public function update(Request $request, Post $post)
     {
         Validator::make(
             $request->all(),
@@ -114,5 +113,13 @@ class PostController extends Controller
             ],
             $messages = []
         )->validate();
+
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->category_id = $request->category;
+
+        $post->save();
+
+        return redirect('/');
     }
 }

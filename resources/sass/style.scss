@@ -1,5 +1,4 @@
 @import "_reset.scss";
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap');
 
 // Colors
 $black:#000;
@@ -7,7 +6,8 @@ $white: #fff;
 $green: #198754;
 $red: #dc3545;
 $warning: #0dcaf0;
-$primary-color: #18a0fb;
+$primary-color: #0079fe;
+$secondary-color: #343a40;
 $grey: #ced4da;
 $text-grey: rgb(119, 119, 119);
 
@@ -16,7 +16,7 @@ $line-height: 1.35em;
 
 
 // Font
-$main-font: "Montserrat";
+$main-font: "system-ui";
 
 // Font Sizes
 $title-size: 2em;
@@ -36,6 +36,8 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  letter-spacing: .15px;
+
 }
 
 a {
@@ -121,7 +123,7 @@ textarea {
 
 .navbar {
   min-height: 56px;
-
+  background-color: $secondary-color;
   .nav-item,
   a {
     color: $white;
@@ -271,7 +273,7 @@ textarea {
 }
 
 #footer {
-  background-color: $black;
+  background-color: $secondary-color;
   color: $white;
   padding: 1rem;
   text-align: center;
@@ -359,5 +361,21 @@ textarea {
 #error {
   .title {
     text-align: center;
+  }
+}
+
+#user-show
+{
+  .avatar{
+    max-width: 100px;;
+    max-height: 100px;
+    overflow: hidden;
+    border-radius: 100%;
+
+    img{
+      object-fit: contain;
+      width: 100px;
+      height: 100px;
+    }
   }
 }

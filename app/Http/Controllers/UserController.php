@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use Cloudinary;
 
 class UserController extends Controller
 {
@@ -20,8 +23,48 @@ class UserController extends Controller
         } else {
             $posts = Post::where('user_id', $user_id)->limit(15)->get();
         }
+
         return view('user.show', [
             'user' => $user, 'posts' => $posts
         ]);
+    }
+
+    public function edit($user_id)
+    {
+        $user = User::findOrFail($user_id);
+
+        if (Auth::id() == $user->id) {
+            return view('user.edit', ["user" => $user]);
+        }
+    }
+    public function update(Request $request, User $user)
+    {
+        Validator::make(
+            $request->all(),
+            $rules = [
+                'name' => [
+                    'required',
+                    'string',
+                    'max:100',
+                ],
+            ],
+            $messages = []
+        )->validate();
+
+
+        if ($request->hasFile('image')) {
+            $newImageName = time() . '.' . $request->image->extension();
+
+            $uploadedFileUrl = Cloudinary::upload($request->image->getRealPath())->getSecurePath();
+            dd($uploadedFileUrl);
+            $user->image = $request->body;
+        }
+
+        $user->name = $request->name;
+
+
+        $user->save();
+
+        return redirect('/');
     }
 }

@@ -1,4 +1,3 @@
-@import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap);
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0-modified | 20110126
    License: none (public domain)
@@ -362,11 +361,12 @@ textarea {
 }
 
 body {
-  font-family: "Montserrat";
+  font-family: "system-ui";
   line-height: 1.35em;
   display: flex;
   flex-direction: column;
   height: 100vh;
+  letter-spacing: 0.15px;
 }
 
 a {
@@ -427,16 +427,16 @@ main {
   outline: none;
   border: 0;
   border-radius: 0.25rem;
-  font-family: "Montserrat";
+  font-family: "system-ui";
 }
 .btn.btn-primary {
-  background: #18a0fb;
+  background: #0079fe;
   color: #fff;
   padding: 0.5rem 1.1rem;
   transition: 0.1s ease-in-out;
 }
 .btn.btn-primary:hover {
-  background: #048ce6;
+  background: #0066d5;
 }
 
 input,
@@ -445,7 +445,7 @@ textarea {
   border: 1px solid #ced4da;
   padding: 0.44rem 0.6rem;
   box-sizing: border-box;
-  font-family: "Montserrat";
+  font-family: "system-ui";
 }
 input.is-invalid,
 textarea.is-invalid {
@@ -454,6 +454,7 @@ textarea.is-invalid {
 
 .navbar {
   min-height: 56px;
+  background-color: #343a40;
 }
 .navbar .nav-item,
 .navbar a {
@@ -587,7 +588,7 @@ textarea.is-invalid {
 }
 
 #footer {
-  background-color: #000;
+  background-color: #343a40;
   color: #fff;
   padding: 1rem;
   text-align: center;
@@ -619,7 +620,7 @@ textarea.is-invalid {
   }
 }
 #login a {
-  color: #18a0fb;
+  color: #0079fe;
 }
 #login .title {
   text-align: center;
@@ -652,7 +653,7 @@ textarea.is-invalid {
   }
 }
 #edit a {
-  color: #18a0fb;
+  color: #0079fe;
 }
 #edit .title {
   text-align: center;
@@ -660,4 +661,17 @@ textarea.is-invalid {
 
 #error .title {
   text-align: center;
+}
+
+#user-show .avatar {
+  max-width: 100px;
+  max-height: 100px;
+  overflow: hidden;
+  border-radius: 100%;
+}
+#user-show .avatar img {
+  -o-object-fit: contain;
+     object-fit: contain;
+  width: 100px;
+  height: 100px;
 }
