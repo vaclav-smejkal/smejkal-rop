@@ -23,14 +23,6 @@
                             <div class="date">{{ date_format($post->created_at, 'H:i | d.m.Y') }}</div>
                         </div>
                         <div class="body">{{ mb_strimwidth($post->body, 0, 350, '...') }}</div>
-<<<<<<< HEAD
-                        <div class="btn-group">
-                            <a href="{{ url('posts/' . $post->id) }}" class="btn btn-primary">Číst více</a>
-                            @auth
-                                @if (Auth::id() == $post->user_id)
-                                    <a href="{{ url('/post/' . $post->id . '/edit') }}" class="btn btn-success">
-                                        <i class="fa fa-pencil"></i></a>
-=======
                         <div class="button-group">
                             <a href="{{ url('posts/' . $post->id) }}" class="btn btn-primary">
                                 Číst více
@@ -39,7 +31,6 @@
                                 @if (Auth::id() == $post->user_id)
                                     <a href="{{ url('/post/' . $post->id . '/edit') }}" class="btn btn-success"> <i
                                             class="fa fa-pencil"></i></a>
->>>>>>> de2ab1bcfc2ff6c9ee1e0b6e3e51bc92a96fa46d
                                     <form action="{{ route('post.destroy', $post->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')

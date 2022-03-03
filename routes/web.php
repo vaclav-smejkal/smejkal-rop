@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SeedController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,5 +28,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('/post', PostController::class)->only(["store", "edit", "update", "destroy", "create"]);
 });
 
-
+Route::get('/user/{user_id}', [UserController::class, "show"]);
 //dodelat edit update delete u POST a pak vse udelat s kategoriema

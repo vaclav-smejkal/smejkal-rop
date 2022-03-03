@@ -7,7 +7,7 @@
             <div class="title">
                 {{ $post->title }}
             </div>
-            <div class="author">Autor: {{ $user->name }}</div>
+            Autor:<a href="/user/{{ $user->id }}"> {{ $user->name }}</a>
             <p class="body">
                 {{ $post->body }}
             </p>

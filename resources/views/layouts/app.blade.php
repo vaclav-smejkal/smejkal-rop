@@ -35,12 +35,6 @@
                             Diskuzní fórum
                         </a>
                     </li>
-<<<<<<< HEAD
-                    @auth
-                        <li class="nav-item">
-                            <a href="/posts">
-                                Diskuzní fórum
-=======
                     @auth
                         <li class="nav-item">
                             <a href="/post/create">
@@ -50,6 +44,13 @@
                     @endauth
                 </ul>
                 <ul class="btn-box">
+                    @auth
+                        <li class="nav-item">
+                            <a href="/user/{{ Auth::id() }}">
+                                {{ Auth::user()->name }}
+                            </a>
+                        </li>
+                    @endauth
                     @auth
                         <li class="nav-item">
                             <form id="logout-form" action="{{ route('logout') }}" method="POST">
@@ -69,64 +70,33 @@
                         <li class="nav-item">
                             <a href="/register" class="btn btn-primary">
                                 Registrace
->>>>>>> de2ab1bcfc2ff6c9ee1e0b6e3e51bc92a96fa46d
                             </a>
                         </li>
                         @endif
                     </ul>
-                    <ul class="btn-box">
-                        @auth
-                            <li class="nav-item">
-                                <a href="{{ route('logout') }}"
-                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    Odhlásit se
-                                </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                                    @csrf
-                                </form>
-                            </li>
-                        @else
-                            <li class="nav-item">
-                                <a href="/login" class="btn btn-primary">
-                                    Přihlášení
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/register" class="btn btn-primary">
-                                    Registrace
-                                </a>
-                            </li>
-                            @endif
-                        </ul>
-                    </div>
+
                 </div>
-<<<<<<< HEAD
-            </nav>
-            <main>
-                @yield("content")
-            </main>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-                        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-            </script>
-
-
-        </body>
-=======
             </div>
         </nav>
-        <main>
-            @yield("content")
-        </main>
-        <footer id="footer">
-            <div class="copyright">
-                &copy; Václav Smejkal
-            </div>
-        </footer>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-        </script>
-
     </body>
->>>>>>> de2ab1bcfc2ff6c9ee1e0b6e3e51bc92a96fa46d
+    <main>
+        @yield("content")
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
 
-        </html>
+
+
+
+
+    <footer id="footer">
+        <div class="copyright">
+            &copy; Václav Smejkal
+        </div>
+    </footer>
+
+
+
+
+    </html>

@@ -30,6 +30,7 @@ class CreateNewUser implements CreatesNewUsers
                 Rule::unique(User::class),
             ],
             'password' => $this->passwordRules(),
+            'email.email' => 'nesprávný formát emailu',
         ])->validate();
 
         return User::create([
