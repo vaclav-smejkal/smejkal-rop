@@ -56,8 +56,7 @@ class UserController extends Controller
             $newImageName = time() . '.' . $request->image->extension();
 
             $uploadedFileUrl = Cloudinary::upload($request->image->getRealPath())->getSecurePath();
-            dd($uploadedFileUrl);
-            $user->image = $request->body;
+            $user->image = $uploadedFileUrl;
         }
 
         $user->name = $request->name;
