@@ -360,6 +360,10 @@ textarea {
   padding: 0.2em 0;
 }
 
+.invalid-feedback {
+  display: block;
+}
+
 body {
   font-family: "system-ui";
   line-height: 1.35em;

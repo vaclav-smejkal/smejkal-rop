@@ -20,13 +20,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $categories = array("Zprávy", "IT", "Politika");
-        foreach ($categories as $category) {
-            DB::table('categories')->insert([
-                'name' => $category,
-                'sanitized_name' => Helper::instance()->friendly_url($category),
-            ]);
-        }
+
         \App\Models\User::factory(5)->create();
         \App\Models\Post::factory(5)->create();
 

@@ -5,6 +5,7 @@ use App\Http\Controllers\SeedController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CommentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,6 +33,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('/user', UserController::class)->only(["edit", "update"]);
 });
 
+Route::post('/comment/store', [CommentController::class, 'store'])->name('comment.add');
+Route::post('/reply/store', [CommentController::class, 'replyStore'])->name('reply.add');
 
 
 

@@ -15,7 +15,12 @@
             <div class="avatar">
                 <img src="{{ $user->image }}">
             </div>
-            <a href="{{ url('/user/' . $user->id . '/edit') }}" class="btn btn-success"> <i class="fa fa-pencil"></i></a>
+            @auth
+                @if (Auth::id() == $user->id)
+                    <a href="{{ url('/user/' . $user->id . '/edit') }}" class="btn btn-success"> <i
+                            class="fa fa-pencil"></i></a>
+                @endif
+            @endauth
             <form action="/user/{{ $user->id }}" method="GET" class="form">
                 <input type="text" name="search">
                 <button type="submit" class="btn btn-primary">Vyhledat příspěvek</button>

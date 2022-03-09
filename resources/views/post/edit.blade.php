@@ -29,12 +29,6 @@
                         </span>
                     @enderror
                 </div>
-                <select class="form-select" name="category" id="category">
-                    @foreach ($categories as $category)
-                        <option value="{{ $category->id }}" @if ($post->category_id == $category->id) selected @endif>
-                            {{ $category->name }}</option>
-                    @endforeach
-                </select>
                 @if (session()->has('message'))
                     <div class="alert alert-success">
                         {{ session()->get('message') }}

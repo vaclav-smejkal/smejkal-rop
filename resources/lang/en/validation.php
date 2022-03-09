@@ -163,6 +163,8 @@ return [
         'body' => 'obsah',
         'category' => 'kategorie',
         'image' => 'profilový obrázek',
+        'comment_body' => 'tělo komentáře',
+        'password' => 'heslo',
     ],
 
 ];

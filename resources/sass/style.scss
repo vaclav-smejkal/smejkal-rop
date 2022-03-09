@@ -30,6 +30,10 @@ $lg: 992px;
 $xl: 1200px;
 $xxl: 1400px;
 
+.invalid-feedback {
+  display: block;
+}
+
 body {
   font-family: $main-font;
   line-height: $line-height;
