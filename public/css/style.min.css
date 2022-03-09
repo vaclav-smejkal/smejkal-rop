@@ -406,6 +406,12 @@ img {
   font-size: 2em;
   margin-bottom: 1.5rem;
   padding-bottom: 1rem;
+  line-height: 1.35em;
+}
+@media (max-width: 992px) {
+  .title {
+    font-size: 1.6em;
+  }
 }
 
 .subtitle {
@@ -482,6 +488,22 @@ textarea.is-invalid {
 .navbar .navbar-toggler {
   margin-left: auto;
 }
+.navbar .user {
+  display: flex;
+  align-items: center;
+}
+@media (min-width: 992px) {
+  .navbar .user {
+    margin-right: 1rem;
+  }
+}
+.navbar .user .img {
+  margin-right: 0.5rem;
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  border-radius: 100%;
+}
 .navbar .btn-box {
   margin-left: auto;
   display: flex;
@@ -490,6 +512,10 @@ textarea.is-invalid {
   .navbar .btn-box {
     flex-direction: column;
   }
+}
+.navbar .btn-box .nav-item {
+  display: flex;
+  align-items: center;
 }
 .navbar .btn-box .nav-item:not(:last-child) {
   margin-right: 0.5rem;
@@ -530,49 +556,66 @@ textarea.is-invalid {
 #posts .search {
   margin-bottom: 1rem;
 }
-#posts .posts-grid {
+
+.posts-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 1rem;
 }
-#posts .post {
+@media (max-width: 992px) {
+  .posts-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (min-width: 992px) {
+  .posts-grid .no-posts {
+    grid-column: 1/3;
+  }
+}
+
+.post {
+  display: flex;
+  flex-direction: column;
   box-shadow: 0 5px 25px -5px rgba(0, 0, 0, 0.1), 0 4px 10px -6px rgba(0, 0, 0, 0.1);
   padding: 2rem;
 }
 @media (max-width: 992px) {
-  #posts .post {
+  .post {
     padding: 1.5rem;
   }
 }
-#posts .post-header {
+
+.post-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 1rem;
 }
 @media (max-width: 992px) {
-  #posts .post-header {
+  .post-header {
     flex-direction: column;
     align-items: flex-start;
   }
 }
-#posts .post-header .subtitle {
+.post-header .subtitle {
   margin: 0;
 }
 @media (max-width: 992px) {
-  #posts .post-header .subtitle {
+  .post-header .subtitle {
     margin-bottom: 0.75rem;
   }
 }
-#posts .post-header .date {
+.post-header .date {
   color: #777777;
 }
-#posts .button-group {
-  margin-top: 1rem;
+
+.button-group {
+  margin-top: auto;
+  padding-top: 1rem;
   display: flex;
 }
-#posts .button-group .btn-success,
-#posts .button-group .btn-danger {
+.button-group .btn-success,
+.button-group .btn-danger {
   margin-left: 0.5rem;
   height: 40px;
   width: 40px;
@@ -585,10 +628,51 @@ textarea.is-invalid {
 }
 #post p {
   text-align: justify;
-}
-#post .author {
-  color: #777777;
   margin-bottom: 1rem;
+}
+#post .avatar-align {
+  display: flex;
+  align-items: center;
+}
+#post .avatar {
+  display: flex;
+  align-items: center;
+}
+#post .avatar .img {
+  width: 35px;
+  height: 35px;
+  border-radius: 100%;
+  overflow: hidden;
+}
+#post .avatar .name {
+  color: #000;
+  margin-left: 0.75rem;
+}
+#post .alert {
+  margin-top: 0.5rem;
+}
+#post .comment-body,
+#post .reply-btn {
+  margin-left: 3rem;
+}
+#post .comment-border {
+  border-left: 1px dashed #0079fe;
+  padding-left: 1.5rem;
+}
+#post .comment {
+  margin-top: 1.5rem;
+}
+#post .comment #comment-form {
+  margin: 0.5rem 0 0 3rem;
+}
+#post .comment .comment-body {
+  margin-bottom: 0.5rem;
+}
+#post .comment .reply {
+  color: #0079fe;
+}
+#post .comment.parent {
+  margin-left: 1rem;
 }
 
 #footer {
@@ -667,15 +751,52 @@ textarea.is-invalid {
   text-align: center;
 }
 
+#user-show .title {
+  text-align: center;
+  margin: 0;
+}
+#user-show .btn.edit {
+  margin-bottom: 1rem;
+}
+#user-show .user-flex {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+#user-show .form {
+  display: flex;
+  margin-bottom: 1rem;
+}
+#user-show .form input {
+  width: 100%;
+}
+#user-show .form .btn {
+  margin-left: 0.5rem;
+}
+#user-show .desc {
+  margin-bottom: 0.5rem;
+}
 #user-show .avatar {
+  margin-right: 1.5rem;
   max-width: 100px;
   max-height: 100px;
   overflow: hidden;
   border-radius: 100%;
+  border: 2px solid #0079fe;
 }
-#user-show .avatar img {
-  -o-object-fit: contain;
-     object-fit: contain;
-  width: 100px;
-  height: 100px;
+
+#comment-form {
+  display: flex;
+}
+#comment-form.hide {
+  display: none;
+}
+#comment-form .input {
+  width: 100%;
+}
+#comment-form .input input {
+  height: 40px;
+}
+#comment-form .btn {
+  margin-left: 0.5rem;
 }

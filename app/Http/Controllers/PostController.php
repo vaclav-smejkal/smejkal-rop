@@ -31,7 +31,7 @@ class PostController extends Controller
     public function create()
     {
 
-        return view('post.create', ['categories' => $categories]);
+        return view('post.create');
     }
 
     public function store(Request $request)
@@ -85,7 +85,7 @@ class PostController extends Controller
         $post = Post::findOrFail($post_id);
 
         if (Auth::id() == $post->user_id) {
-            return view('post.edit', ["post" => $post, "categories" => $categories]);
+            return view('post.edit', ["post" => $post]);
         } else {
         }
     }

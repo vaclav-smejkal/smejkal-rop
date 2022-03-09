@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'failed' => 'Špatný formát emailu.',
+    'failed' => 'Zadané údaje nejsou správné.',
     'password' => 'Špatné heslo.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 

@@ -42,8 +42,8 @@
                         </div>
                     </div>
                 @empty
-                    <div>
-                        žádné příspěvky zatím nebyly vytvořeny
+                    <div class="no-posts">
+                        Žádné příspěvky zatím nebyly vytvořeny
                     </div>
                 @endforelse
             </div>

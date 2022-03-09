@@ -33,6 +33,17 @@ class CommentController extends Controller
 
     public function replyStore(Request $request)
     {
+        Validator::make(
+            $request->all(),
+            $rules = [
+                'comment_body' => [
+                    'required',
+                    'string',
+                ],
+            ],
+            $messages = [],
+        )->validate();
+
         $reply = new Comment();
         $reply->body = $request->get('comment_body');
         $reply->user()->associate($request->user());
