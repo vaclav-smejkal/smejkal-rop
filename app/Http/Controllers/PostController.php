@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\User;
-use App\Models\Category;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
@@ -30,7 +30,7 @@ class PostController extends Controller
 
     public function create()
     {
-        $categories = Category::get();
+
         return view('post.create', ['categories' => $categories]);
     }
 
@@ -47,9 +47,6 @@ class PostController extends Controller
                 'body' => [
                     'required',
                 ],
-                'category' => [
-                    'required'
-                ]
             ],
             $messages = []
         )->validate();
@@ -58,7 +55,6 @@ class PostController extends Controller
             'title' => $request['title'],
             'body' => $request['body'],
             'user_id' => Auth::id(),
-            'category_id' => $request['category'],
         ]);
         return redirect('/post/create')->with('message', 'Příspěvek byl přidán');
     }
@@ -68,13 +64,12 @@ class PostController extends Controller
         $post = Post::where('id', $post_id)->first();
         $user = User::where('id', $post->user_id)->first();
 
-        $category = Category::where('id', $post->category_id)->first();
         if (!$post) {
             abort(404);
         }
 
         return view('post.show', [
-            'post' => $post, 'user' => $user, 'category' => $category
+            'post' => $post, 'user' => $user,
         ]);
     }
     public function destroy($post_id)
@@ -88,7 +83,7 @@ class PostController extends Controller
     public function edit($post_id)
     {
         $post = Post::findOrFail($post_id);
-        $categories = Category::get();
+
         if (Auth::id() == $post->user_id) {
             return view('post.edit', ["post" => $post, "categories" => $categories]);
         } else {
@@ -107,16 +102,14 @@ class PostController extends Controller
                 'body' => [
                     'required',
                 ],
-                'category' => [
-                    'required'
-                ]
+
             ],
             $messages = []
         )->validate();
 
         $post->title = $request->title;
         $post->body = $request->body;
-        $post->category_id = $request->category;
+
 
         $post->save();
 
