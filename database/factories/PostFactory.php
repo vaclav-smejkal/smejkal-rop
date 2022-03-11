@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Category;
 use App\Models\User;
 
 
@@ -20,7 +19,6 @@ class PostFactory extends Factory
             'title' => $this->faker->word,
             'body' => $this->faker->paragraph(15, true),
             'user_id' => User::all()->random()->id,
-            'category_id' => Category::all()->random()->id,
         ];
     }
 }

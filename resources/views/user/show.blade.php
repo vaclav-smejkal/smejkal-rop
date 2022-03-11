@@ -1,14 +1,31 @@
 @extends('layouts.app')
-@section('title', 'Diskuzní fórum')
+@section('title', 'Dashboard')
 
 @section('content')
-    <section id="posts">
+    <section id="user-show">
         <div class="container">
-            <h1 class="main-title">Diskusní fórum</h1>
-            <p class="desc">
-                Diskusní fórum tvořené přihlášenými uživateli.
-            </p>
-            <form action="/posts" method="GET" class="form">
+            <div class="user-flex">
+                <div class="avatar">
+                    <img src="{{ $user->image }}">
+                </div>
+                <div class="title">
+                    {{ $user->name }} |
+                    @if ($user->role_id == 1)
+                        Administrátor
+                    @else
+                        Uživatel
+                    @endif
+                </div>
+            </div>
+            @auth
+                @if (Auth::id() == $user->id)
+                    <a href="{{ url('/user/' . $user->id . '/edit') }}" class="btn btn-primary edit">
+                        Upravit profil
+                    </a>
+                @endif
+            @endauth
+            <div class="desc">Příspěvky od {{ $user->name }}:</div>
+            <form action="/user/{{ $user->id }}" method="GET" class="form">
                 <input type="text" name="search">
                 <button type="submit" class="btn btn-primary">Vyhledat</button>
             </form>
@@ -16,7 +33,7 @@
                 <p class="search">Výsledky hledání pro výraz {{ $search }}.</p>
             @endisset
             <div class="posts-grid">
-                @foreach ($posts as $key => $post)
+                @forelse ($posts as $key => $post)
                     <div class="post">
                         <div class="post-header">
                             <div class="subtitle">{{ $post->title }}</div>
@@ -29,21 +46,22 @@
                             </a>
                             @auth
                                 @if (Auth::id() == $post->user_id)
-                                    <a href="{{ url('/post/' . $post->id) . '/edit' }}" class="btn btn-success"> <i
+                                    <a href="{{ url('/post/' . $post->id . '/edit') }}" class="btn btn-success"> <i
                                             class="fa fa-pencil"></i></a>
                                     <form action="{{ route('post.destroy', $post->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">
-                                            <i class="fa fa-trash-o"></i>
-                                        </button>
+                                        <button type="submit" class="btn btn-danger"><i class="fa fa-trash-o">
+                                            </i></button>
                                     </form>
                                 @endif
                             @endauth
                         </div>
                     </div>
-                @endforeach
+                @empty
+                    <div class="no-posts">
+                        Žádné příspěvky zatím nebyly vytvořeny.
+                    </div>
+                @endforelse
             </div>
-        </div>
-    </section>
-@endsection
+        @endsection

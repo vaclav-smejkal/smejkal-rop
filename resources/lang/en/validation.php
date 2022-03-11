@@ -43,7 +43,7 @@ return [
     'digits_between' => 'The :attribute must be between :min and :max digits.',
     'dimensions' => 'The :attribute has invalid image dimensions.',
     'distinct' => 'The :attribute field has a duplicate value.',
-    'email' => 'The :attribute must be a valid email address.',
+    'email' => ':attribute musí mít správný formát.',
     'ends_with' => 'The :attribute must end with one of the following: :values.',
     'enum' => 'The selected :attribute is invalid.',
     'exists' => 'The selected :attribute is invalid.',
@@ -85,7 +85,7 @@ return [
     'max' => [
         'numeric' => 'The :attribute must not be greater than :max.',
         'file' => 'The :attribute must not be greater than :max kilobytes.',
-        'string' => 'The :attribute must not be greater than :max characters.',
+        'string' => ':attribute nesmí mít více než :max characters znaků.',
         'array' => 'The :attribute must not have more than :max items.',
     ],
     'mimes' => 'The :attribute must be a file of type: :values.',
@@ -107,7 +107,7 @@ return [
     'prohibited_unless' => 'The :attribute field is prohibited unless :other is in :values.',
     'prohibits' => 'The :attribute field prohibits :other from being present.',
     'regex' => 'The :attribute format is invalid.',
-    'required' => 'The :attribute field is required.',
+    'required' => 'Vyplňte :attribute ',
     'required_if' => 'The :attribute field is required when :other is :value.',
     'required_unless' => 'The :attribute field is required unless :other is in :values.',
     'required_with' => 'The :attribute field is required when :values is present.',
@@ -122,7 +122,7 @@ return [
         'array' => 'The :attribute must contain :size items.',
     ],
     'starts_with' => 'The :attribute must start with one of the following: :values.',
-    'string' => 'The :attribute must be a string.',
+    'string' => ':attribute má špatný formát',
     'timezone' => 'The :attribute must be a valid timezone.',
     'unique' => 'The :attribute has already been taken.',
     'uploaded' => 'The :attribute failed to upload.',
@@ -157,6 +157,14 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'name' => 'jméno',
+        'title' => 'titulek',
+        'body' => 'obsah',
+        'category' => 'kategorie',
+        'image' => 'profilový obrázek',
+        'comment_body' => 'tělo komentáře',
+        'password' => 'heslo',
+    ],
 
 ];

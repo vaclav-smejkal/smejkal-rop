@@ -163,6 +163,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
+        CloudinaryLabs\CloudinaryLaravel\CloudinaryServiceProvider::class,
         /*
          * Package Service Providers...
          */

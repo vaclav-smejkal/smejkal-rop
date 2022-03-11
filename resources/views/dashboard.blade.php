@@ -16,7 +16,7 @@
                 <p class="search">Výsledky hledání pro výraz {{ $search }}.</p>
             @endisset
             <div class="posts-grid">
-                @foreach ($posts as $key => $post)
+                @forelse ($posts as $key => $post)
                     <div class="post">
                         <div class="post-header">
                             <div class="subtitle">{{ $post->title }}</div>
@@ -34,15 +34,18 @@
                                     <form action="{{ route('post.destroy', $post->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">
-                                            <i class="fa fa-trash-o"></i>
-                                        </button>
+                                        <button type="submit" class="btn btn-danger"><i class="fa fa-trash-o">
+                                            </i></button>
                                     </form>
                                 @endif
                             @endauth
                         </div>
                     </div>
-                @endforeach
+                @empty
+                    <div class="no-posts">
+                        Žádné příspěvky zatím nebyly vytvořeny
+                    </div>
+                @endforelse
             </div>
         </div>
     </section>

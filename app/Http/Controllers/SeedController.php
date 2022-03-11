@@ -9,7 +9,7 @@ class SeedController extends Controller
 {
     public function index()
     {
-        Artisan::call("migrate:fresh");
+        Artisan::call('migrate:fresh');
         Artisan::call("db:seed", ['--class' => 'DatabaseSeeder']);
 
         return "Generation was successful";

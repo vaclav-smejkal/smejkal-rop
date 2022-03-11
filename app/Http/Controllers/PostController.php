@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\User;
-use App\Models\Category;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
@@ -15,17 +15,23 @@ class PostController extends Controller
     public function index(Request $request)
     {
         if ($request->search) {
-            $posts = Post::join('users', 'posts.user_id', "=", 'users.id')->select('posts.*', 'users.role_id', 'users.name')->where([['role_id', null], ['title', 'regexp', $request->search]])->limit(15)->get();
+            $posts = Post::join('users', 'posts.user_id', "=", 'users.id')
+                ->select('posts.*', 'users.role_id', 'users.name')
+                ->where([['role_id', null], ['title', 'regexp', $request->search]])
+                ->limit(15)->get();
         } else {
-            $posts = Post::join('users', 'posts.user_id', "=", 'users.id')->select('posts.*', 'users.role_id', 'users.name')->where('role_id', null)->limit(15)->get();
+            $posts = Post::join('users', 'posts.user_id', "=", 'users.id')
+                ->select('posts.*', 'users.role_id', 'users.name')
+                ->where('role_id', null)
+                ->limit(15)->get();
         }
-        return view('post.index', ['posts' => $posts, 'search' => $request->search]);
+        return view('post.index', ['posts' => $posts]);
     }
 
     public function create()
     {
-        $categories = Category::get();
-        return view('post.create', ['categories' => $categories]);
+
+        return view('post.create');
     }
 
     public function store(Request $request)
@@ -41,9 +47,6 @@ class PostController extends Controller
                 'body' => [
                     'required',
                 ],
-                'category' => [
-                    'required'
-                ]
             ],
             $messages = []
         )->validate();
@@ -52,7 +55,6 @@ class PostController extends Controller
             'title' => $request['title'],
             'body' => $request['body'],
             'user_id' => Auth::id(),
-            'category_id' => $request['category'],
         ]);
         return redirect('/post/create')->with('message', 'Příspěvek byl přidán');
     }
@@ -62,13 +64,12 @@ class PostController extends Controller
         $post = Post::where('id', $post_id)->first();
         $user = User::where('id', $post->user_id)->first();
 
-        $category = Category::where('id', $post->category_id)->first();
         if (!$post) {
             abort(404);
         }
 
         return view('post.show', [
-            'post' => $post, 'user' => $user, 'category' => $category
+            'post' => $post, 'user' => $user,
         ]);
     }
     public function destroy($post_id)
@@ -76,20 +77,19 @@ class PostController extends Controller
         $post = Post::findOrFail($post_id);
         if (Auth::id() == $post->user_id) {
             $post->delete();
-            redirect();
-        } else {
+            return redirect('/');
         }
     }
     public function edit($post_id)
     {
         $post = Post::findOrFail($post_id);
-        $categories = Category::get();
+
         if (Auth::id() == $post->user_id) {
-            return view('post.edit', ["post" => $post, "categories" => $categories]);
+            return view('post.edit', ["post" => $post]);
         } else {
         }
     }
-    public function update(Request $request)
+    public function update(Request $request, Post $post)
     {
         Validator::make(
             $request->all(),
@@ -102,11 +102,17 @@ class PostController extends Controller
                 'body' => [
                     'required',
                 ],
-                'category' => [
-                    'required'
-                ]
+
             ],
             $messages = []
         )->validate();
+
+        $post->title = $request->title;
+        $post->body = $request->body;
+
+
+        $post->save();
+
+        return redirect('/');
     }
 }
